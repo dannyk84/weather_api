@@ -30,15 +30,17 @@ class WeatherAPIClient:
 
         points_url = f"{self.BASE_URL}/points/{longitude},{latitude}"
         points_response = requests.get(points_url).json()
-        if points_response.get("status"):
-            err = f"Error calling points endpoint | err={points_response['detail']}"
+        err = forecast_response.get("detail")
+        if err:
+            err = f"Error calling points endpoint | err={err}"
             logging.error(err)
             return Err(err)
 
         forecast_url = points_response["properties"]["forecast"]
         forecast_response = requests.get(forecast_url).json()
-        if forecast_response.get("status"):
-            err = f"Error calling forecast endpoint | err={forecast_response['detail']}"
+        err = forecast_response.get("detail")
+        if err:
+            err = f"Error calling forecast endpoint | err={err}"
             logging.error(err)
             return Err(err)
 
