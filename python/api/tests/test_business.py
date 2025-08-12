@@ -55,7 +55,7 @@ class TestGetForecast:
         # Assertions
         result = get_forecast(client=client, longitude=longitude, latitude=latitude)
         assert result.is_err
-        assert result.unwrap_err() == "Error running client.get_forecast() | err=Error"
+        assert result.unwrap_err() == "Error getting forecast"
 
         mock_get_forecast.assert_called_once_with(
             longitude=longitude,
