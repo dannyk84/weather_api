@@ -1,8 +1,6 @@
 ## Running the application
 ```
-pip install -r requirements.txt
-
-cd ./golang
+cd ./api
 go run main.go
 ```
 
