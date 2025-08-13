@@ -1,2 +1,2 @@
 # Weather Report API
-Recently, Python has been my primary language, which is why I chose to use it; however, I also wrote the endpoint in Golang to showcase my skills.
+Recently, Python has been my primary language, which is why I chose to use it; however, I also wrote the endpoint in Golang to showcase my proficiency.
