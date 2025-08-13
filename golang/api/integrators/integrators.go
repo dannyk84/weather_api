@@ -17,6 +17,7 @@ func NewWeatherAPICient() WeatherAPIClient {
 	}
 }
 
+// Endpoints
 func (wac WeatherAPIClient) GetForecast(
 	longitude float32,
 	latitude float32,
