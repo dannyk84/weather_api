@@ -22,3 +22,4 @@ curl "http://127.0.0.1:8080/forecast?longitude=39.7456&latitude=-97.0892"
 ## Some improvements I can make
 - I'd init a `context` in `main.go` and pass it to the other layers.
 - I'd move some of the marshaling logic in `integrators.go` to a reusable function.
+- I'd break out the multiple API calls in `WeatherAPIClient.GetForecast()` into two separate functions (`GetForecast` and `GetPoints`)
