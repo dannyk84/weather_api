@@ -12,9 +12,9 @@ type WeatherAPIClient struct {
 }
 
 func NewWeatherAPICient() WeatherAPIClient {
-	return WeatherAPIClient{
-		url: "https://api.weather.gov",
-	}
+	log.Print("Starting up WeatherAPIClient")
+
+	return WeatherAPIClient{url: "https://api.weather.gov"}
 }
 
 // Endpoints
