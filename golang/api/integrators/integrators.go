@@ -22,10 +22,9 @@ func (wac WeatherAPIClient) GetForecast(
 	latitude float32,
 ) (*Forecast, error) {
 	/*
-		Returns forecast information for this afternoon. We're first calling the
+		Returns the most recent forecast data for today. We're first calling the
 		'points' endpoint, which returns a url for the 'forecast' endpoint. We then
 		call the 'forecast' endpoint to get the data we actually need.
-
 
 		Points
 		####################
@@ -48,14 +47,13 @@ func (wac WeatherAPIClient) GetForecast(
 
 	var pointsObj PointsResponse
 	json.Unmarshal(pointsRespData, &pointsObj)
-
 	if pointsObj.Error != nil {
 		errMsg := *pointsObj.Error
 		log.Printf("points response has an error | err=%v", errMsg)
 		return nil, errors.New(errMsg)
 	}
 
-	// Forecast endoint
+	// Forecast endpoint
 	forecastUrl := pointsObj.Properties.Forecast
 	forecastRespData, err := sendRequest(forecastUrl)
 	if err != nil {
@@ -71,7 +69,7 @@ func (wac WeatherAPIClient) GetForecast(
 		return nil, errors.New(errMsg)
 	}
 
-	// This gets the forecast for this afternoon
+	// This gets the most recent forecast for today
 	forecastValues := forecastObj.Properties.Periods[0]
 
 	return &Forecast{

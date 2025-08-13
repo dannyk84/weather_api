@@ -12,10 +12,9 @@ class WeatherAPIClient:
 
     def get_forecast(self, longitude: float, latitude: float) -> Result[dict, str]:
         """
-        Returns forecast information for this afternoon. We're first calling the
-        'points' endpoint, which returns a url for the 'forecast' endpoint. We then
-        call the 'forecast' endpoint to get the data we actually need.
-
+		Returns the most recent forecast data for today. We're first calling the
+		'points' endpoint, which returns a url for the 'forecast' endpoint. We then
+		call the 'forecast' endpoint to get the data we actually need.
 
         Points
         ####################
@@ -30,7 +29,7 @@ class WeatherAPIClient:
 
         points_url = f"{self.BASE_URL}/points/{longitude},{latitude}"
         points_response = requests.get(points_url).json()
-        err = forecast_response.get("detail")
+        err = points_response.get("detail")
         if err:
             err = f"Error calling points endpoint | err={err}"
             logging.error(err)
@@ -44,7 +43,7 @@ class WeatherAPIClient:
             logging.error(err)
             return Err(err)
 
-        # This gets the forecast for this afternoon
+        # This gets the most recent forecast for today
         forecast_values = forecast_response["properties"]["periods"][0]
 
         return Ok(
