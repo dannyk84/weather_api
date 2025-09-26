@@ -16,7 +16,6 @@ curl "http://127.0.0.1:8000/forecast?longitude=39.7456&latitude=-97.0892"
 ```
 
 ## Running tests
-I usually try to reach 100% coverage; however due to time, I only wrote tests for the business layer.
 ```
 pytest
 ```
